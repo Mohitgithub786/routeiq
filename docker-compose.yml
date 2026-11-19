@@ -1,0 +1,30 @@
+services:
+  mcp-router:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: enterprise-mcp-agent-router
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=production
+      - LOG_LEVEL=INFO
+      - HOST=0.0.0.0
+      - PORT=8000
+      - MCP_TIMEOUT_SECONDS=10.0
+      - ENABLE_METRICS=true
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
