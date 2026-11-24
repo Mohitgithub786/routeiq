@@ -12,7 +12,7 @@ class Settings(BaseSettings):
         extra="ignore"
     )
 
-    APP_NAME: str = "Enterprise Multi-Agent MCP Router"
+    APP_NAME: str = "RouteIQ — Intelligent MCP Agent Dispatcher"
     APP_VERSION: str = "1.0.0"
     APP_ENV: str = "production"
     DEBUG: bool = False
