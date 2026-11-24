@@ -64,4 +64,6 @@ class MetricsResponse(BaseModel):
     average_latency_ms: float
     total_tokens_saved: int
     routing_accuracy_pct: float
+    cache_hits: int = 0
+    cache_hit_ratio_pct: float = 0.0
     agent_distribution: Dict[str, int]
