@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: routeiq
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: PORT
+        value: 8000
+      - key: ENABLE_METRICS
+        value: "true"
